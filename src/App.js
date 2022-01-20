@@ -1,23 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
+import Home from './components/Home';
+import Number from './components/Number';
+import Word from './components/Word';
+import Color from './components/Color';
+import {Switch, Route, Link} from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <h2>Routing</h2>
+
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+            <Link to="/home">Home</Link> |
+          
+          | <Link to="/number/:int">Number</Link> |
+
+          | <Link to="/word/:word">Word</Link> |
+
+          | <Link to="/:word/:color1/:color2">Color</Link>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+
+        <Switch>
+
+        <Route path="/home">
+            <Home/>
+          </Route>
+
+          <Route path="/number/:int">
+            <Number/>
+          </Route>
+
+          <Route path="/word/:word">
+            <Word/>
+          </Route>
+
+          <Route path="/:word/:color1/:color2">
+            <Color/>
+          </Route>
+
+        </Switch>
     </div>
   );
 }

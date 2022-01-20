@@ -1,8 +1,6 @@
 import './App.css';
 import Home from './components/Home';
-import Number from './components/Number';
-import Word from './components/Word';
-import Color from './components/Color';
+import ShowInfo from './components/ShowInfo';
 import {Switch, Route, Link} from 'react-router-dom';
 
 function App() {
@@ -13,31 +11,24 @@ function App() {
         <p>
             <Link to="/home">Home</Link> |
           
-          | <Link to="/number/:int">Number</Link> |
-
-          | <Link to="/word/:word">Word</Link> |
-
-          | <Link to="/:word/:color1/:color2">Color</Link>
+          | <Link to="/:id">Show Info</Link>
         </p>
 
 
         <Switch>
 
-        <Route path="/home">
+          <Route exact path="/:id/:textColor/:backColor">
+            <ShowInfo/>
+          </Route>
+
+          <Route path="/:id">
+            <ShowInfo/>
+          </Route>
+
+          <Route path="/home">
             <Home/>
           </Route>
 
-          <Route path="/number/:int">
-            <Number/>
-          </Route>
-
-          <Route path="/word/:word">
-            <Word/>
-          </Route>
-
-          <Route path="/:word/:color1/:color2">
-            <Color/>
-          </Route>
 
         </Switch>
     </div>
